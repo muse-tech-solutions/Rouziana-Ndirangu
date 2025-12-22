@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- BASIC SEO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rouzianah Ndirangu | Brand Ambassador & Commercial Model</title>
+  <meta name="description" content="Rouzianah Ndirangu is a professional brand ambassador and commercial model based in Nanyuki, Kenya. Experienced in FMCG, liquor brands, and digital campaigns.">
+  <meta name="keywords" content="Brand Ambassador Kenya, Commercial Model Kenya, Nanyuki Model, FMCG Promotions, Liquor Brand Ambassador">
+  <meta name="author" content="Rouzianah Ndirangu">
+
+  <!-- OPEN GRAPH (Social Sharing) -->
+  <meta property="og:title" content="Rouzianah Ndirangu | Brand Ambassador & Commercial Model">
+  <meta property="og:description" content="Professional brand ambassador & commercial model based in Nanyuki, Kenya.">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nude: '#f5f3f0',
+          },
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body: ['Poppins', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-body text-gray-800">
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/254700000000"
+   class="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50"
+   aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.52 3.48A11.91 11.91 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.1.56 4.15 1.64 5.97L0 24l6.2-1.64a11.94 11.94 0 005.84 1.48h.01c6.64 0 12-5.36 12-12a11.9 11.9 0 00-3.53-8.52z"/>
+  </svg>
+</a>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center bg-nude px-6 text-center">
+  <div>
+    <h1 class="font-heading text-5xl md:text-6xl font-bold mb-4">
+      Rouzianah Ndirangu
+    </h1>
+    <p class="text-xl mb-6">Brand Ambassador • Commercial Model</p>
+    <p class="text-gray-600 mb-8">
+      Bringing brands to life with confidence, elegance & impact 💕
+    </p>
+    <a href="#contact" class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition">
+      Work With Me
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="py-20 px-6 max-w-4xl mx-auto text-center">
+  <h2 class="font-heading text-4xl mb-6">About Me</h2>
+  <p class="text-gray-700 leading-relaxed">
+    I am <strong>Rouzianah Ndirangu</strong>, a professional brand ambassador and commercial model
+    based in Nanyuki, Kenya. I have experience working with liquor, FMCG, and retail brands
+    including Manyatta Liquor, Windhoek Alcohol, EABL brands, and Unilever Kenya.
+  </p>
+</section>
+
+<!-- SERVICES -->
+<section class="bg-nude py-20 px-6">
+  <h2 class="font-heading text-4xl text-center mb-12">What I Do</h2>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
+      <h3 class="font-heading text-xl mb-3">Brand Promotion</h3>
+      <p class="text-gray-600">Liquor, FMCG & supermarket activations.</p>
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
+      <h3 class="font-heading text-xl mb-3">Commercial Modeling</h3>
+      <p class="text-gray-600">Lifestyle & product campaigns.</p>
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
+      <h3 class="font-heading text-xl mb-3">Digital Campaigns</h3>
+      <p class="text-gray-600">Instagram & TikTok brand visibility.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO WITH HOVER + LIGHTBOX -->
+<section class="py-20 px-6">
+  <h2 class="font-heading text-4xl text-center mb-12">Portfolio</h2>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <!-- Image Item -->
+    <img src="img1.jpg" alt="Brand Promotion"
+      class="cursor-pointer rounded-xl hover:scale-105 transition"
+      onclick="openLightbox(this.src)">
+    <img src="img2.jpg" alt="Commercial Model"
+      class="cursor-pointer rounded-xl hover:scale-105 transition"
+      onclick="openLightbox(this.src)">
+    <img src="img3.jpg" alt="Lifestyle Shoot"
+      class="cursor-pointer rounded-xl hover:scale-105 transition"
+      onclick="openLightbox(this.src)">
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox"
+     class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50"
+     onclick="closeLightbox()">
+  <img id="lightbox-img" class="max-h-[90%] max-w-[90%] rounded-xl">
+</div>
+
+<!-- CONTACT FORM (NETLIFY) -->
+<section id="contact" class="bg-nude py-20 px-6 text-center">
+  <h2 class="font-heading text-4xl mb-6">Let’s Collaborate</h2>
+
+  <form name="contact"
+        method="POST"
+        data-netlify="true"
+        class="max-w-xl mx-auto space-y-4 bg-white p-8 rounded-2xl shadow">
+    <input type="hidden" name="form-name" value="contact">
+
+    <input type="text" name="name" placeholder="Your Name" required
+      class="w-full border p-3 rounded">
+    <input type="email" name="email" placeholder="Your Email" required
+      class="w-full border p-3 rounded">
+    <textarea name="message" placeholder="Campaign details..." required
+      class="w-full border p-3 rounded h-32"></textarea>
+
+    <button type="submit"
+      class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition w-full">
+      Send Message
+    </button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-6 text-center text-sm text-gray-500">
+  © 2025 Rouzianah Ndirangu. All rights reserved.
+</footer>
+
+<!-- LIGHTBOX SCRIPT -->
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.getElementById('lightbox').classList.add('flex');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.add('hidden');
+    document.getElementById('lightbox').classList.remove('flex');
+  }
+</script>
+
+</body>
+</html>
