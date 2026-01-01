@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Rouzianah Ndirangu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+
+        :root {
+            --soft-pink: #fdf2f8;
+            --deep-rose: #be185d;
+            --champagne: #fefcfb;
+            --accent-gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--champagne);
+            color: #1f2937;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animated Mesh Gradient for Header */
+        .mesh-header {
+            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 50%, #fff1f2 100%);
+            background-size: 400% 400%;
+            animation: meshGradient 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes meshGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-pattern-dots {
+            background-image: radial-gradient(#be185d 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Artistic Portrait Styling */
+        .portrait-frame {
+            position: relative;
+            padding: 20px;
+        }
+        .portrait-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90%;
+            height: 90%;
+            border: 1px solid var(--deep-rose);
+            z-index: 0;
+            border-radius: 3rem;
+            transform: rotate(-3deg);
+        }
+        .portrait-img {
+            position: relative;
+            z-index: 10;
+            border-radius: 3rem;
+            box-shadow: 20px 20px 0px rgba(190, 24, 93, 0.05);
+        }
+
+        .philosophy-text {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--deep-rose);
+            border-radius: full;
+            position: relative;
+        }
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 1px solid var(--deep-rose);
+            border-radius: 50%;
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/60 backdrop-blur-xl border-b border-pink-100">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="index-gemini-6.html" class="text-2xl font-bold tracking-tighter text-pink-700">ROUZIANAH.</a>
+            <div class="space-x-10 text-xs font-bold uppercase tracking-widest hidden md:flex">
+                <a href="index-gemini-6.html" class="hover:text-pink-600 transition">Home</a>
+                <a href="#philosophy" class="hover:text-pink-600 transition">Philosophy</a>
+                <a href="#journey" class="hover:text-pink-600 transition">Journey</a>
+                <a href="index-gemini-6.html#contact" class="hover:text-pink-600 transition">Work With Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="mesh-header pt-48 pb-32 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-7xl md:text-9xl font-black italic tracking-tighter mb-6 text-gray-900">The Story Behind <br><span class="text-pink-700">The Muse.</span></h1>
+            <p class="text-pink-800/60 uppercase tracking-[0.4em] font-bold text-sm">Crafting Elegance • Shaping Brands</p>
+        </div>
+    </section>
+
+    <!-- Detailed Bio Section -->
+    <section class="py-32 px-6 bg-white bg-pattern-dots">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="portrait-frame">
+                    <img src="images/about.jpeg" alt="Rouzianah" class="portrait-img w-full h-auto">
+                </div>
+                <div>
+                    <div class="inline-block bg-pink-100 px-4 py-1 rounded-full mb-8">
+                        <span class="text-pink-700 font-black uppercase tracking-[0.2em] text-[10px]">Deep Dive</span>
+                    </div>
+                    <h2 class="text-5xl font-black mb-10 italic tracking-tighter">Defining the <span class="text-pink-700">Era.</span></h2>
+                    
+                    <div class="space-y-8 text-xl font-light text-gray-600 leading-relaxed">
+                        <p>
+                            Based in the scenic landscapes of Nanyuki, my career has been a deliberate blend of artistic expression and commercial strategy. Starting as a professional model, I realized early on that a brand isn't just a product—it's an emotion.
+                        </p>
+                        <p>
+                            My "Soft Girl Era" isn't just an aesthetic; it's a professional philosophy. It represents a transition into a space where grace, authenticity, and strategic calmness lead to more impactful brand storytelling. Whether it's representing a premium spirit like <span class="text-gray-900 font-bold">EABL</span> or a household name like <span class="text-gray-900 font-bold">Unilever</span>, I bring a level of poise that turns consumers into advocates.
+                        </p>
+                        <p>
+                            I believe in the power of physical presence. In a digital world, the real-world connection—the smile at an activation, the elegance in a commercial, the energy at a festival—is what truly builds brand loyalty.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section (Big Typography) -->
+    <section id="philosophy" class="py-40 px-6 bg-[#0f0a0c] text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-pink-900/10 blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h3 class="text-pink-500 font-black uppercase tracking-[0.5em] mb-12 text-xs">My Core Philosophy</h3>
+            <p class="philosophy-text italic">
+                "I don't just <span class="text-pink-500">represent</span> a brand; I embody the lifestyle that the brand promises. My goal is to make every interaction feel like a <span class="text-pink-500">premium experience</span>, ensuring that elegance and strategy are never mutually exclusive."
+            </p>
+            <div class="mt-20 flex gap-20">
+                <div>
+                    <p class="text-pink-500 font-black text-3xl">01</p>
+                    <p class="text-xs uppercase tracking-widest font-bold mt-2">Authenticity</p>
+                </div>
+                <div>
+                    <p class="text-pink-500 font-black text-3xl">02</p>
+                    <p class="text-xs uppercase tracking-widest font-bold mt-2">Excellence</p>
+                </div>
+                <div>
+                    <p class="text-pink-500 font-black text-3xl">03</p>
+                    <p class="text-xs uppercase tracking-widest font-bold mt-2">Vibrancy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline / Journey Section -->
+    <section id="journey" class="py-32 px-6 bg-[#fafafa]">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 class="text-6xl font-black italic tracking-tighter">The Evolution</h2>
+                <p class="text-gray-400 font-bold uppercase tracking-[0.3em] text-[10px] mt-4">Milestones of a Muse</p>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Milestone 1 -->
+                <div class="flex flex-col md:flex-row gap-12 items-center group">
+                    <div class="w-full md:w-1/3 md:text-right">
+                        <span class="text-4xl font-black text-pink-700 italic group-hover:not-italic transition-all">2019 — 2021</span>
+                    </div>
+                    <div class="hidden md:block"><div class="timeline-dot"></div></div>
+                    <div class="w-full md:w-1/2 glass-card p-10 rounded-[2.5rem]">
+                        <h4 class="text-2xl font-bold mb-4">The Creative Genesis</h4>
+                        <p class="text-gray-500 leading-relaxed">Early career focusing on professional modeling and high-energy music video appearances. Established a foundation in visual storytelling and camera presence.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="flex flex-col md:flex-row-reverse gap-12 items-center group">
+                    <div class="w-full md:w-1/3">
+                        <span class="text-4xl font-black text-pink-700 italic group-hover:not-italic transition-all">2022 — 2024</span>
+                    </div>
+                    <div class="hidden md:block"><div class="timeline-dot"></div></div>
+                    <div class="w-full md:w-1/2 glass-card p-10 rounded-[2.5rem]">
+                        <h4 class="text-2xl font-bold mb-4">Commercial Expansion</h4>
+                        <p class="text-gray-500 leading-relaxed">Transitioned into major brand activations. Partnering with industry leaders like EABL and Unilever to drive consumer engagement through professional promotion.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div class="flex flex-col md:flex-row gap-12 items-center group">
+                    <div class="w-full md:w-1/3 md:text-right">
+                        <span class="text-4xl font-black text-pink-700 italic group-hover:not-italic transition-all">2025 — Present</span>
+                    </div>
+                    <div class="hidden md:block"><div class="timeline-dot"></div></div>
+                    <div class="w-full md:w-1/2 glass-card p-10 rounded-[2.5rem]">
+                        <h4 class="text-2xl font-bold mb-4">The Soft Girl Era</h4>
+                        <p class="text-gray-500 leading-relaxed">Redefining brand representation with a focus on grace and premium lifestyle aesthetics. Leveraging high social reach to influence market trends.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-[#0f0a0c] border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto">
+            <a href="index-gemini-6.html" class="text-2xl font-black italic text-pink-500 tracking-tighter">ROUZIANAH NDIRANGU.</a>
+            <div class="flex justify-center gap-10 mt-8 mb-12 text-white/40">
+                <a href="https://www.instagram.com/rouzianandirangu/" class="hover:text-pink-500 transition-all"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@rouzianandirangu0" class="hover:text-pink-500 transition-all"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="text-gray-600 text-[10px] font-black uppercase tracking-[0.5em]">&copy; 2026 Rouzianah Ndirangu • All Rights Reserved</p>
+        </div>
+    </footer>
+
+</body>
+</html>

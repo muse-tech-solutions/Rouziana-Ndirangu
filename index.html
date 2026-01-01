@@ -13,6 +13,7 @@
             --soft-pink: #fdf2f8;
             --deep-rose: #be185d;
             --champagne: #fefcfb;
+            --accent-gold: #d4af37;
         }
 
         body {
@@ -20,21 +21,52 @@
             background-color: var(--champagne);
             color: #1f2937;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
         }
 
+        /* Animated Hero Mesh Gradient */
         .hero-gradient {
-            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%);
+            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 50%, #fff1f2 100%);
+            background-size: 400% 400%;
+            animation: meshGradient 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes meshGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Artistic Background Patterns */
+        .bg-pattern-dots {
+            background-image: radial-gradient(#be185d 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            background-color: transparent;
+        }
+
+        .bg-pattern-waves {
+            background: 
+                radial-gradient(circle at 100% 50%, transparent 20%, rgba(190, 24, 93, 0.03) 21%, rgba(190, 24, 93, 0.03) 34%, transparent 35%, transparent),
+                radial-gradient(circle at 0% 50%, transparent 20%, rgba(190, 24, 93, 0.03) 21%, rgba(190, 24, 93, 0.03) 34%, transparent 35%, transparent) 0 -50px;
+            background-size: 75px 100px;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(190, 24, 93, 0.08);
         }
 
         .floating {
@@ -47,9 +79,76 @@
             100% { transform: translateY(0px); }
         }
 
+         /* WhatsApp Button Pulse */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+
+        .whatsapp-pulse {
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-pulse:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-pulse::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid #25d366;
+            animation: pulse-ring 1.5s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        /* Chatbot Bubble */
+        .chat-bubble {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 18px 18px 0 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1f2937;
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .chat-bubble.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         /* Parallax Styling */
         .parallax-section {
-            height: 60vh;
+            height: 65vh;
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -57,15 +156,10 @@
             position: relative;
         }
 
-        .parallax-1 {
-            background-image: url('images/332009158_223153073428310_4606857514725667051_n.webp');
-        }
+        .parallax-1 { background-image: url('images/332009158_223153073428310_4606857514725667051_n.webp'); }
+        .parallax-2 { background-image: url('https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?q=80&w=2000&auto=format&fit=crop'); }
 
-        .parallax-2 {
-            background-image: url('https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?q=80&w=2000&auto=format&fit=crop');
-        }
-
-        /* Portrait Styling */
+        /* Artistic Portrait Styling */
         .portrait-frame {
             position: relative;
             padding: 20px;
@@ -75,102 +169,136 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 80%;
-            height: 80%;
-            border: 2px solid #be185d;
+            width: 85%;
+            height: 85%;
+            border: 1px solid var(--deep-rose);
             z-index: 0;
-            border-radius: 1rem;
+            border-radius: 2rem;
+            transform: rotate(-3deg);
         }
         .portrait-img {
             position: relative;
             z-index: 10;
-            border-radius: 1rem;
-            box-shadow: 20px 20px 0px #fce7f3;
+            border-radius: 2rem;
+            box-shadow: 15px 15px 0px rgba(190, 24, 93, 0.1);
+            transition: transform 0.5s ease;
+        }
+        .portrait-img:hover {
+            transform: scale(1.02) rotate(1deg);
         }
 
         .stat-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
-        .stat-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
         }
+        .stat-card:hover::after { opacity: 1; }
 
         /* Work Gallery Hover Effect */
         .work-item {
             position: relative;
             overflow: hidden;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
         }
         .work-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(190, 24, 93, 0.85); /* deep-rose with opacity */
+            background: linear-gradient(to top, rgba(190, 24, 93, 0.95), transparent);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-end;
+            padding: 2rem;
             opacity: 0;
-            transition: all 0.4s ease;
-            transform: translateY(10px);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateY(20px);
         }
         .work-item:hover .work-overlay {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Section divider curves */
+        .curve-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-pink-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-xl font-bold tracking-tighter text-pink-700">ROUZIANAH.</span>
-            <div class="space-x-8 text-sm font-semibold uppercase tracking-wider hidden md:flex">
-                <a href="#about" class="hover:text-pink-600 transition">About Me</a>
-                <a href="#presence" class="hover:text-pink-600 transition">Presence</a>
-                <a href="#experience" class="hover:text-pink-600 transition">Experience</a>
-                <a href="#services" class="hover:text-pink-600 transition">Services</a>
-                <a href="#works" class="hover:text-pink-600 transition">Works</a>
-                <a href="#contact" class="hover:text-pink-600 transition">Contact</a>
+    <nav class="fixed w-full z-50 bg-white/60 backdrop-blur-xl border-b border-pink-100">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <span class="text-2xl font-bold tracking-tighter text-pink-700">ROUZIANAH.</span>
+            <div class="space-x-10 text-xs font-bold uppercase tracking-widest hidden md:flex">
+                <a href="about.html" class="hover:text-pink-600 transition relative group">About <span class="absolute -bottom-1 left-0 w-0 h-px bg-pink-600 transition-all group-hover:w-full"></span></a>
+                <a href="#presence" class="hover:text-pink-600 transition relative group">Social <span class="absolute -bottom-1 left-0 w-0 h-px bg-pink-600 transition-all group-hover:w-full"></span></a>
+                <a href="#services" class="hover:text-pink-600 transition relative group">Services <span class="absolute -bottom-1 left-0 w-0 h-px bg-pink-600 transition-all group-hover:w-full"></span></a>
+                <a href="#works" class="hover:text-pink-600 transition relative group">Portfolio <span class="absolute -bottom-1 left-0 w-0 h-px bg-pink-600 transition-all group-hover:w-full"></span></a>
+                <a href="contact.html" class="hover:text-pink-600 transition relative group">Contact <span class="absolute -bottom-1 left-0 w-0 h-px bg-pink-600 transition-all group-hover:w-full"></span></a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient pt-32 pb-20 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="mb-8 relative inline-block">
-                <div class="w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-white shadow-xl overflow-hidden mx-auto">
-                    <img src="images/hero-1.jpg" alt="Rouzianah Ndirangu" class="w-full h-full object-cover">
+    <section class="hero-gradient min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <!-- Abstract Shapes -->
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-rose-200/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="mb-10 relative inline-block">
+                <div class="w-56 h-56 md:w-72 md:h-72 rounded-full border-8 border-white/50 shadow-2xl overflow-hidden mx-auto p-1 bg-white">
+                    <img src="images/hero-1.jpg" alt="Rouzianah Ndirangu" class="w-full h-full object-cover rounded-full">
                 </div>
-                <div class="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-lg floating">
-                    <span class="text-2xl">💕</span>
+                <div class="absolute -bottom-2 -right-2 bg-white p-4 rounded-full shadow-2xl floating">
+                    <span class="text-3xl">🌸</span>
                 </div>
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-black mb-4 text-gray-900 italic">Rouzianah Ndirangu</h1>
-            <p class="text-lg md:text-xl text-pink-700 font-medium mb-8 uppercase tracking-[0.2em]">Commercial Model • Brand Ambassador</p>
+            <h1 class="text-6xl md:text-9xl font-black mb-6 text-gray-900 italic tracking-tighter leading-none">Rouzianah <span class="text-pink-700">Ndirangu</span></h1>
+            <p class="text-xl md:text-2xl text-pink-800/80 font-medium mb-12 uppercase tracking-[0.3em]">Commercial Model • Brand Ambassador</p>
             
-            <div class="flex flex-wrap justify-center gap-4 mb-10">
-                <span class="bg-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm">Soft Girl Era ✨</span>
-                <span class="bg-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm">Nanyuki, Kenya 📍</span>
-                <span class="bg-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm">BMW Lover 🏎️</span>
+            <div class="flex flex-wrap justify-center gap-6 mb-16">
+                <span class="bg-white/60 backdrop-blur-md border border-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl text-pink-900">Soft Girl Era ✨</span>
+                <span class="bg-white/60 backdrop-blur-md border border-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl text-pink-900">Nanyuki, Kenya 📍</span>
+                <span class="bg-white/60 backdrop-blur-md border border-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl text-pink-900">BMW Lover 🏎️</span>
             </div>
+
+            <a href="#about" class="animate-bounce inline-block text-pink-400">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
         </div>
     </section>
 
     <!-- Parallax Image Section 1 -->
-    <div class="parallax-section parallax-1 w-full border-y-8 border-white">
-        <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
-            <p class="text-white text-xs md:text-sm font-bold uppercase tracking-[0.5em] drop-shadow-lg">Bold • Elegant • Professional</p>
+    <div class="parallax-section parallax-1 w-full border-y-[20px] border-white relative">
+        <div class="absolute inset-0 bg-pink-900/10 flex items-center justify-center">
+            <div class="bg-white/10 backdrop-blur-md px-12 py-6 border border-white/20 rounded-full">
+                <p class="text-white text-sm md:text-lg font-bold uppercase tracking-[0.8em] drop-shadow-lg">Bold • Elegant • Professional</p>
+            </div>
         </div>
     </div>
 
     <!-- About Section -->
-    <section id="about" class="py-24 px-6 bg-white overflow-hidden">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-16">
+    <section id="about" class="py-32 px-6 bg-white relative overflow-hidden bg-pattern-dots">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-20">
                 <!-- Image Column -->
                 <div class="w-full md:w-1/2 portrait-frame">
                     <img src="images/about.jpeg" 
@@ -180,32 +308,34 @@
 
                 <!-- Content Column -->
                 <div class="w-full md:w-1/2">
-                    <h3 class="text-pink-600 font-bold uppercase tracking-widest mb-4">About Me</h3>
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                        A Passion for <span class="italic text-pink-700">Aesthetics</span> & Strategic Brand Growth.
+                    <div class="inline-block bg-pink-100 px-4 py-1 rounded-full mb-6">
+                        <h3 class="text-pink-700 font-black uppercase tracking-[0.2em] text-[10px]">The Muse</h3>
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-bold text-gray-900 mb-10 leading-[1.1]">
+                        A Passion for <span class="italic text-pink-700 relative">Aesthetics <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="#be185d" fill="transparent" stroke-width="2"/></svg></span> & Strategic Growth.
                     </h2>
                     
-                    <div class="space-y-6 text-gray-600 leading-relaxed text-lg">
+                    <div class="space-y-8 text-gray-600 leading-relaxed text-xl font-light">
                         <p>
                             Hello! I am <span class="font-bold text-gray-900">Rouzianah Ndirangu</span>, a seasoned Brand Promoter and Commercial Model based in the vibrant heart of Nanyuki, Kenya. My journey began in the creative arts as a professional model and music video vixen, where I learned the power of visual storytelling and presence.
                         </p>
                         <p>
-                            Today, I leverage that experience to represent globally recognized brands. I have successfully led activations for industry giants like <span class="font-semibold text-pink-800">EABL, Windhoek, and Manyatta Liquor</span>. My expertise extends to the retail sector, where I've partnered with <span class="font-semibold text-pink-800">Unilever Kenya</span> to drive consumer engagement within local supermarkets.
+                            Today, I leverage that experience to represent globally recognized brands. I have successfully led activations for industry giants like <span class="font-semibold text-pink-800">East African Breweries Limited (EABL), Viva Global.</span>.
                         </p>
-                        <p>
-                            Currently embracing my "Soft Girl Era," I combine grace with a sharp ambition for marketing. I am dedicated to bridging the gap between premium brands and their target audiences through authentic, high-energy promotion.
+                        <p class="italic text-pink-700 font-medium">
+                            Currently embracing my "Soft Girl Era," I combine grace with a sharp ambition for marketing.
                         </p>
                     </div>
 
-                    <div class="mt-10 flex gap-6">
+                    <div class="mt-12 flex gap-10">
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-pink-700">10+</span>
-                            <span class="text-xs uppercase font-bold text-gray-400 tracking-tighter">Brands Represented</span>
+                            <span class="text-5xl font-black text-pink-700">10+</span>
+                            <span class="text-[10px] uppercase font-bold text-gray-400 tracking-[0.2em] mt-2">Brands Represented</span>
                         </div>
-                        <div class="w-px h-12 bg-gray-200"></div>
+                        <div class="w-px h-16 bg-pink-100"></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-pink-700">5+</span>
-                            <span class="text-xs uppercase font-bold text-gray-400 tracking-tighter">Years Experience</span>
+                            <span class="text-5xl font-black text-pink-700">5+</span>
+                            <span class="text-[10px] uppercase font-bold text-gray-400 tracking-[0.2em] mt-2">Years Experience</span>
                         </div>
                     </div>
                 </div>
@@ -214,75 +344,81 @@
     </section>
 
     <!-- Parallax Image Section 2 -->
-    <div class="parallax-section parallax-2 w-full border-y-8 border-white">
-        <div class="absolute inset-0 bg-black/20 flex items-center justify-center text-center px-6">
-            <h2 class="text-white text-3xl md:text-5xl font-black italic tracking-wider drop-shadow-2xl">Influencing Choice, One Interaction at a Time</h2>
+    <div class="parallax-section parallax-2 w-full border-y-[20px] border-white">
+        <div class="absolute inset-0 bg-pink-900/30 flex items-center justify-center text-center px-6">
+            <h2 class="text-white text-4xl md:text-7xl font-black italic tracking-tighter drop-shadow-2xl max-w-4xl">Influencing Choice, One Interaction at a Time</h2>
         </div>
     </div>
 
     <!-- My Digital Presence Section -->
-    <section id="presence" class="py-24 px-6 bg-pink-50/30">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-                <div class="max-w-xl">
-                    <h3 class="text-pink-600 font-bold uppercase tracking-widest mb-4">Social Stats</h3>
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight italic">My Digital Presence</h2>
+    <section id="presence" class="py-32 px-6 bg-pink-50/50 relative bg-pattern-waves">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+                <div class="max-w-2xl">
+                    <h3 class="text-pink-600 font-black uppercase tracking-[0.3em] mb-4 text-xs">Analytics</h3>
+                    <h2 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight italic tracking-tighter">My Digital Presence</h2>
                 </div>
-                <p class="text-gray-500 max-w-xs text-right hidden md:block">Real-time engagement and reach across major platforms.</p>
+                <p class="text-pink-800/60 max-w-xs text-right hidden md:block uppercase text-[10px] font-bold tracking-widest">Real-time engagement and reach across major platforms.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- TikTok Card -->
-                <a href="https://www.tiktok.com/@rouzianandirangu0" target="_blank" class="stat-card bg-white p-8 rounded-[2.5rem] border border-pink-100 flex flex-col justify-between h-64 shadow-sm">
+                <a href="https://www.tiktok.com/@rouzianandirangu0" target="_blank" class="stat-card bg-white/40 backdrop-blur-md p-10 rounded-[3rem] border border-white flex flex-col justify-between h-80 shadow-xl group">
                     <div class="flex justify-between items-start">
-                        <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center text-xl">
+                        <div class="w-16 h-16 bg-black text-white rounded-3xl flex items-center justify-center text-2xl group-hover:rotate-12 transition-transform">
                             <i class="fab fa-tiktok"></i>
                         </div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-pink-500">Live Reach</span>
+                        <div class="px-3 py-1 bg-pink-50 rounded-full">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-pink-500">Live Reach</span>
+                        </div>
                     </div>
                     <div>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-4xl font-black text-gray-900 tracking-tight" id="tiktok-followers">--</span>
-                            <span class="text-gray-400 text-sm font-bold uppercase">Followers</span>
+                            <span class="text-5xl font-black text-gray-900 tracking-tighter" id="tiktok-followers">--</span>
+                            <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Followers</span>
                         </div>
-                        <div class="flex items-baseline gap-2 mt-1">
-                            <span class="text-xl font-bold text-pink-600" id="tiktok-likes">--</span>
-                            <span class="text-gray-400 text-xs font-bold uppercase">Likes</span>
+                        <div class="mt-2 flex items-center gap-2">
+                             <div class="w-2 h-2 rounded-full bg-green-400 animate-ping"></div>
+                             <span class="text-pink-600 font-bold text-xs" id="tiktok-likes">-- Likes</span>
                         </div>
                     </div>
                 </a>
 
                 <!-- Instagram Card -->
-                <a href="https://www.instagram.com/rouzianandirangu/" target="_blank" class="stat-card bg-white p-8 rounded-[2.5rem] border border-pink-100 flex flex-col justify-between h-64 shadow-sm">
+                <a href="https://www.instagram.com/rouzianandirangu/" target="_blank" class="stat-card bg-white/40 backdrop-blur-md p-10 rounded-[3rem] border border-white flex flex-col justify-between h-80 shadow-xl group">
                     <div class="flex justify-between items-start">
-                        <div class="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white rounded-2xl flex items-center justify-center text-xl">
+                        <div class="w-16 h-16 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white rounded-3xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                             <i class="fab fa-instagram"></i>
                         </div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-pink-500">Global Muse</span>
+                        <div class="px-3 py-1 bg-pink-50 rounded-full">
+                             <span class="text-[10px] font-bold uppercase tracking-widest text-pink-500">Global Muse</span>
+                        </div>
                     </div>
                     <div>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-4xl font-black text-gray-900 tracking-tight" id="insta-followers">--</span>
-                            <span class="text-gray-400 text-sm font-bold uppercase">Followers</span>
+                            <span class="text-5xl font-black text-gray-900 tracking-tighter" id="insta-followers">--</span>
+                            <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Followers</span>
                         </div>
-                        <p class="text-gray-400 text-xs font-bold uppercase mt-1">@rouzianandirangu</p>
+                        <p class="text-pink-800/40 text-[10px] font-black uppercase mt-2 tracking-[0.2em]">@rouzianandirangu</p>
                     </div>
                 </a>
 
                 <!-- Facebook Card -->
-                <a href="https://www.facebook.com/rouzianandirangu.ndirangu" target="_blank" class="stat-card bg-white p-8 rounded-[2.5rem] border border-pink-100 flex flex-col justify-between h-64 shadow-sm">
+                <a href="https://www.facebook.com/rouzianandirangu.ndirangu" target="_blank" class="stat-card bg-white/40 backdrop-blur-md p-10 rounded-[3rem] border border-white flex flex-col justify-between h-80 shadow-xl group">
                     <div class="flex justify-between items-start">
-                        <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-xl">
+                        <div class="w-16 h-16 bg-blue-600 text-white rounded-3xl flex items-center justify-center text-2xl group-hover:-rotate-12 transition-transform">
                             <i class="fab fa-facebook-f"></i>
                         </div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-pink-500">Community</span>
+                        <div class="px-3 py-1 bg-pink-50 rounded-full">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-pink-500">Community</span>
+                        </div>
                     </div>
                     <div>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-4xl font-black text-gray-900 tracking-tight" id="fb-followers">--</span>
-                            <span class="text-gray-400 text-sm font-bold uppercase">Followers</span>
+                            <span class="text-5xl font-black text-gray-900 tracking-tighter" id="fb-followers">--</span>
+                            <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Followers</span>
                         </div>
-                        <p class="text-gray-400 text-xs font-bold uppercase mt-1">Verified Fanbase</p>
+                        <p class="text-pink-800/40 text-[10px] font-black uppercase mt-2 tracking-[0.2em]">Verified Fanbase</p>
                     </div>
                 </a>
             </div>
@@ -290,50 +426,49 @@
     </section>
 
     <!-- Experience / Brand Wall -->
-    <section id="experience" class="py-20 px-6 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Brand Portfolio</h2>
-                <p class="text-gray-500 uppercase tracking-widest text-sm">Where I've made an impact</p>
+    <section id="experience" class="py-32 px-6 bg-white relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl font-black mb-4 tracking-tighter italic">Brand Portfolio</h2>
+                <div class="w-24 h-1 bg-pink-200 mx-auto"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Alcohol & Spirits -->
-                <div class="p-8 rounded-3xl bg-pink-50/50 shadow-sm border border-pink-100 glass-card">
-                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-6">
-                        <i class="fas fa-glass-cheers text-xl"></i>
+                <div class="p-12 rounded-[3.5rem] glass-card">
+                    <div class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 mb-8 border border-pink-100">
+                        <i class="fas fa-glass-cheers text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Spirits & Beverages</h3>
-                    <ul class="space-y-3 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Manyatta Liquor</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Windhoek Alcohol</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> EABL Brands</li>
+                    <h3 class="text-2xl font-black mb-6 italic">Spirits & Beverages</h3>
+                    <ul class="space-y-4 text-gray-500 font-medium">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> EABL Brands</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> Viva Global</li>
                     </ul>
                 </div>
 
                 <!-- FMCG / Retail -->
-                <div class="p-8 rounded-3xl bg-pink-50/50 shadow-sm border border-pink-100 glass-card">
-                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-6">
-                        <i class="fas fa-shopping-cart text-xl"></i>
+                <div class="p-12 rounded-[3.5rem] glass-card">
+                    <div class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 mb-8 border border-pink-100">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Retail & FMCG</h3>
-                    <ul class="space-y-3 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Unilever Kenya</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Local Supermarket Activations</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> In-Store Promotions</li>
+                    <h3 class="text-2xl font-black mb-6 italic">Retail & FMCG</h3>
+                    <ul class="space-y-4 text-gray-500 font-medium">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> Unilever Kenya</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> Supermarket Activations</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> In-Store Promotions</li>
                     </ul>
                 </div>
 
                 <!-- Creative -->
-                <div class="p-8 rounded-3xl bg-pink-50/50 shadow-sm border border-pink-100 glass-card">
-                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-6">
-                        <i class="fas fa-camera text-xl"></i>
+                <div class="p-12 rounded-[3.5rem] glass-card">
+                    <div class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 mb-8 border border-pink-100">
+                        <i class="fas fa-camera text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Media & Modeling</h3>
-                    <ul class="space-y-3 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Commercial Modeling</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Music Video Vixen Roles</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Professional Photoshoots</li>
+                    <h3 class="text-2xl font-black mb-6 italic">Media & Modeling</h3>
+                    <ul class="space-y-4 text-gray-500 font-medium">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> Commercial Modeling</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> Music Video Vixen</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> Professional Shoots</li>
                     </ul>
                 </div>
             </div>
@@ -341,125 +476,144 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 px-6 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <h3 class="text-pink-600 font-bold uppercase tracking-widest mb-4 text-center">Offerings</h3>
-            <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center italic text-gray-900 leading-tight">Elevating brands with grace and strategy.</h2>
+    <section id="services" class="py-32 px-6 bg-[#fafafa] relative overflow-hidden">
+        <div class="absolute -right-20 top-20 w-80 h-80 bg-pink-100/50 rounded-full blur-3xl"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <h3 class="text-pink-600 font-black uppercase tracking-[0.4em] mb-4 text-center text-[10px]">What I Provide</h3>
+            <h2 class="text-5xl md:text-7xl font-black mb-20 text-center italic text-gray-900 tracking-tighter leading-tight">Elevating brands with grace.</h2>
             
-            <div class="space-y-2">
-                <div class="flex items-center justify-between p-8 border-y border-gray-100 hover:bg-pink-50/50 transition-all duration-500 group cursor-default">
-                    <span class="text-3xl font-light group-hover:italic group-hover:pl-6 transition-all duration-500">Brand Ambassador</span>
-                    <span class="text-pink-100 group-hover:text-pink-600 transition-colors">01</span>
+            <div class="space-y-0">
+                <div class="flex items-center justify-between py-12 border-y border-gray-200 hover:bg-white transition-all duration-700 group cursor-default px-8 rounded-2xl">
+                    <span class="text-4xl md:text-6xl font-light tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-700">Brand Ambassador</span>
+                    <span class="text-pink-200 text-xl font-black group-hover:text-pink-600 group-hover:scale-125 transition-all">01</span>
                 </div>
-                <div class="flex items-center justify-between p-8 border-b border-gray-100 hover:bg-pink-50/50 transition-all duration-500 group cursor-default">
-                    <span class="text-3xl font-light group-hover:italic group-hover:pl-6 transition-all duration-500">Commercial Modeling</span>
-                    <span class="text-pink-100 group-hover:text-pink-600 transition-colors">02</span>
+                <div class="flex items-center justify-between py-12 border-b border-gray-200 hover:bg-white transition-all duration-700 group cursor-default px-8 rounded-2xl">
+                    <span class="text-4xl md:text-6xl font-light tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-700">Commercial Modeling</span>
+                    <span class="text-pink-200 text-xl font-black group-hover:text-pink-600 group-hover:scale-125 transition-all">02</span>
                 </div>
-                <div class="flex items-center justify-between p-8 border-b border-gray-100 hover:bg-pink-50/50 transition-all duration-500 group cursor-default">
-                    <span class="text-3xl font-light group-hover:italic group-hover:pl-6 transition-all duration-500">In-Store Activation</span>
-                    <span class="text-pink-100 group-hover:text-pink-600 transition-colors">03</span>
+                <div class="flex items-center justify-between py-12 border-b border-gray-200 hover:bg-white transition-all duration-700 group cursor-default px-8 rounded-2xl">
+                    <span class="text-4xl md:text-6xl font-light tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-700">In-Store Activation</span>
+                    <span class="text-pink-200 text-xl font-black group-hover:text-pink-600 group-hover:scale-125 transition-all">03</span>
                 </div>
-                <div class="flex items-center justify-between p-8 border-b border-gray-100 hover:bg-pink-50/50 transition-all duration-500 group cursor-default">
-                    <span class="text-3xl font-light group-hover:italic group-hover:pl-6 transition-all duration-500">Video Vixen & Media</span>
-                    <span class="text-pink-100 group-hover:text-pink-600 transition-colors">04</span>
+                <div class="flex items-center justify-between py-12 border-b border-gray-200 hover:bg-white transition-all duration-700 group cursor-default px-8 rounded-2xl">
+                    <span class="text-4xl md:text-6xl font-light tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-700">Video Vixen & Media</span>
+                    <span class="text-pink-200 text-xl font-black group-hover:text-pink-600 group-hover:scale-125 transition-all">04</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Selected Works Section -->
-    <section id="works" class="py-24 px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div>
-                    <h3 class="text-pink-600 font-bold uppercase tracking-widest mb-4">Gallery</h3>
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight italic">Selected Works</h2>
+    <section id="works" class="py-32 px-6 bg-white bg-pattern-dots">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-10">
+                <div class="max-w-2xl">
+                    <h3 class="text-pink-600 font-black uppercase tracking-[0.4em] mb-4 text-[10px]">Gallery</h3>
+                    <h2 class="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] italic tracking-tighter">Selected <span class="text-pink-800">Works</span></h2>
                 </div>
-                <p class="text-gray-500 max-w-sm text-right hidden md:block">A curated collection of professional shoots, commercial campaigns, and vixen roles.</p>
+                <p class="text-pink-900/40 max-w-[200px] text-right hidden md:block uppercase font-bold text-[10px] tracking-widest leading-loose">A curated collection of professional campaigns and roles.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Gallery Item 1 -->
-                <div class="work-item group">
-                    <img src="images/Windhoek experience 🥳🥳🥳.webp" alt="Work 1" class="w-full aspect-[3/4] object-cover transition duration-700 group-hover:scale-110">
-                    <div class="work-overlay text-white p-6 text-center">
-                        <span class="text-xs font-bold uppercase tracking-[0.3em] mb-2">Brand Activation</span>
-                        <h4 class="text-2xl font-serif italic">Windhoek experience</h4>
-                        <div class="mt-4 w-12 h-px bg-white/50"></div>
+                <div class="work-item group shadow-2xl">
+                    <img src="images/Windhoek experience-1.jpeg" alt="Work 1" class="w-full aspect-[3/4] object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="work-overlay text-white">
+                        <span class="text-[10px] font-black uppercase tracking-[0.5em] mb-2 opacity-70">Brand Activation</span>
+                        <h4 class="text-3xl font-serif italic">Windhoek experience</h4>
                     </div>
                 </div>
 
                 <!-- Gallery Item 2 (Tall) -->
-                <div class="work-item group lg:row-span-2">
-                    <img src="images/model-1.jpg" alt="Work 2" class="w-full h-full min-h-[500px] object-cover transition duration-700 group-hover:scale-110">
-                    <div class="work-overlay text-white p-6 text-center">
-                        <span class="text-xs font-bold uppercase tracking-[0.3em] mb-2">Model</span>
-                        <h4 class="text-2xl font-serif italic">High Fashion Activation</h4>
-                        <div class="mt-4 w-12 h-px bg-white/50"></div>
+                <div class="work-item group lg:row-span-2 shadow-2xl">
+                    <img src="images/model-2.jpeg" alt="Work 2" class="w-full h-full min-h-[600px] object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="work-overlay text-white">
+                        <span class="text-[10px] font-black uppercase tracking-[0.5em] mb-2 opacity-70">Editorial</span>
+                        <h4 class="text-3xl font-serif italic">High Fashion Activation</h4>
                     </div>
                 </div>
 
                 <!-- Gallery Item 3 -->
-                <div class="work-item group">
-                    <img src="images/Manyatta homecoming @ downtown Nanyuki (2).webp" alt="Work 3" class="w-full aspect-[4/5] object-cover transition duration-700 group-hover:scale-110">
-                    <div class="work-overlay text-white p-6 text-center">
-                        <span class="text-xs font-bold uppercase tracking-[0.3em] mb-2">Promotion</span>
-                        <h4 class="text-2xl font-serif italic">Manyatta homecoming @ downtown Nanyuki</h4>
-                        <div class="mt-4 w-12 h-px bg-white/50"></div>
+                <div class="work-item group shadow-2xl">
+                    <img src="images/Manyatta homecoming @ downtown Nanyuki (2).webp" alt="Work 3" class="w-full aspect-[4/5] object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="work-overlay text-white">
+                        <span class="text-[10px] font-black uppercase tracking-[0.5em] mb-2 opacity-70">Promotion</span>
+                        <h4 class="text-3xl font-serif italic text-sm">Manyatta homecoming @ downtown Nanyuki</h4>
                     </div>
                 </div>
 
                 <!-- Gallery Item 4 -->
-                <div class="work-item group">
-                    <img src="images/The crisp experience.webp" alt="Work 4" class="w-full aspect-square object-cover transition duration-700 group-hover:scale-110">
-                    <div class="work-overlay text-white p-6 text-center">
-                        <span class="text-xs font-bold uppercase tracking-[0.3em] mb-2">Promotion</span>
-                        <h4 class="text-2xl font-serif italic">The crisp experience</h4>
-                        <div class="mt-4 w-12 h-px bg-white/50"></div>
+                <div class="work-item group shadow-2xl">
+                    <img src="images/The crisp experience.webp" alt="Work 4" class="w-full aspect-square object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="work-overlay text-white">
+                        <span class="text-[10px] font-black uppercase tracking-[0.5em] mb-2 opacity-70">Live Event</span>
+                        <h4 class="text-3xl font-serif italic">The crisp experience</h4>
                     </div>
                 </div>
 
                 <!-- Gallery Item 5 -->
-                <div class="work-item group">
-                    <img src="images/Tusker fest.webp" alt="Work 5" class="w-full aspect-[3/4] object-cover transition duration-700 group-hover:scale-110">
-                    <div class="work-overlay text-white p-6 text-center">
-                        <span class="text-xs font-bold uppercase tracking-[0.3em] mb-2">Activation</span>
-                        <h4 class="text-2xl font-serif italic">Tusker Fest</h4>
-                        <div class="mt-4 w-12 h-px bg-white/50"></div>
+                <div class="work-item group shadow-2xl">
+                    <img src="images/Tusker fest.webp" alt="Work 5" class="w-full aspect-[3/4] object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="work-overlay text-white">
+                        <span class="text-[10px] font-black uppercase tracking-[0.5em] mb-2 opacity-70">Activation</span>
+                        <h4 class="text-3xl font-serif italic">Tusker Fest</h4>
                     </div>
                 </div>
             </div>
             
-            <div class="mt-16 text-center">
-                <a href="#contact" class="inline-block px-10 py-4 border border-pink-200 text-pink-700 font-bold uppercase tracking-widest text-xs hover:bg-pink-700 hover:text-white transition-all duration-300 rounded-full">View All Projects</a>
+            <div class="mt-24 text-center">
+                <a href="contact.html" class="group relative inline-block px-14 py-5 bg-black text-white font-black uppercase tracking-[0.3em] text-[10px] rounded-full overflow-hidden transition-all hover:pr-20">
+                    <span class="relative z-10">Inquire Now</span>
+                    <span class="absolute right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all"><i class="fas fa-arrow-right"></i></span>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact / Footer -->
-    <section id="contact" class="pt-24 pb-12 px-6 bg-[#1a0f12] text-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
+    <section id="contact" class="pt-32 pb-16 px-6 bg-[#0f0a0c] text-white relative overflow-hidden">
+        <!-- Abstract Glow -->
+        <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-pink-900/30 rounded-full blur-[120px]"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-24 mb-32">
                 <div>
-                    <h2 class="text-5xl font-bold mb-6 italic text-pink-500">Let's Connect.</h2>
-                    <p class="text-gray-400 text-lg mb-8">Ready to bring your brand to life in Nanyuki, Nairobi, and beyond. Inquire about bookings or collaborations.</p>
-                    <div class="flex gap-6 text-3xl">
-                        <a href="https://www.instagram.com/rouzianandirangu/" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@rouzianandirangu0" class="hover:text-pink-500 transition"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.facebook.com/rouzianandirangu.ndirangu" class="hover:text-pink-500 transition"><i class="fab fa-facebook"></i></a>
+                    <h2 class="text-7xl md:text-9xl font-black mb-10 italic text-pink-500 tracking-tighter">Let's <br>Connect.</h2>
+                    <p class="text-gray-400 text-xl font-light max-w-md leading-relaxed">Ready to bring your brand to life in Nanyuki, Nairobi, and beyond. Inquire about bookings or collaborations.</p>
+                    <div class="flex gap-10 text-4xl mt-12">
+                        <a href="https://www.instagram.com/rouzianandirangu/" class="hover:text-pink-500 transition-all hover:-translate-y-2"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@rouzianandirangu0" class="hover:text-pink-500 transition-all hover:-translate-y-2"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/rouzianandirangu.ndirangu" class="hover:text-pink-500 transition-all hover:-translate-y-2"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
-                <div class="flex flex-col gap-4 justify-center">
-                    <a href="mailto:rouzianandirangu@gmail.com" class="text-3xl font-bold border-b-2 border-pink-900 pb-2 hover:border-pink-500 transition-all inline-block">rouzianandirangu@gmail.com</a>
-                    <p class="text-pink-700 font-bold uppercase tracking-widest text-sm mt-4">Nanyuki, Kenya — Worldwide</p>
+                <div class="flex flex-col gap-6 justify-center">
+                    <div class="group">
+                        <p class="text-[10px] font-black uppercase tracking-[0.5em] text-pink-800 mb-2">Direct Email</p>
+                        <a href="mailto:rouzianandirangu@gmail.com" class="text-2xl md:text-4xl font-bold border-b border-pink-900 pb-4 group-hover:border-pink-500 transition-all inline-block italic">rouzianandirangu@gmail.com</a>
+                    </div>
+                    <div class="mt-10">
+                         <p class="text-pink-700 font-black uppercase tracking-[0.4em] text-[10px]">Headquarters</p>
+                         <p class="text-2xl font-light mt-2 italic">Nanyuki, Kenya — Available Worldwide</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="pt-12 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs uppercase tracking-[0.3em]">
+            <div class="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-600 text-[10px] font-black uppercase tracking-[0.5em]">
                 <p>&copy; 2026 Rouzianah Ndirangu</p>
-                <p class="mt-4 md:mt-0">Soft Girl Era • Stay Bold</p>
+                <p class="mt-6 md:mt-0 px-4 py-1 border border-white/10 rounded-full">Soft Girl Era • Stay Bold</p>
             </div>
         </div>
+
+        <!-- WhatsApp Floating Component -->
+    <div class="whatsapp-float">
+        <div id="chat-bubble" class="chat-bubble">
+            Hi! Rouzianah here ✨. How can I help you today?
+        </div>
+        <a href="https://wa.me/254710148587" target="_blank" class="whatsapp-pulse">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
     </section>
 
     <script>
@@ -467,9 +621,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
@@ -490,6 +647,29 @@
 
         // Initialize stats on load
         window.addEventListener('load', updateStats);
+        <!-- WhatsApp Floating Component -->
+    <div class="whatsapp-float">
+        <div id="chat-bubble" class="chat-bubble">
+            Hi! Rouzianah here ✨. How can I help you today?
+        </div>
+        <a href="https://wa.me/254710148587" target="_blank" class="whatsapp-pulse">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+        // WhatsApp Chatbot Delay appearance
+        function initChatbot() {
+            setTimeout(() => {
+                const bubble = document.getElementById('chat-bubble');
+                if(bubble) bubble.classList.add('visible');
+            }, 3000);
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            updateStats();
+            initChatbot();
+        });
+
     </script>
 </body>
 </html>

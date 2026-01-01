@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Rouzianah Ndirangu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+
+        :root {
+            --soft-pink: #fdf2f8;
+            --deep-rose: #be185d;
+            --champagne: #fefcfb;
+            --accent-gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--champagne);
+            color: #1f2937;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animated Mesh Gradient Header */
+        .mesh-header {
+            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 50%, #fff1f2 100%);
+            background-size: 400% 400%;
+            animation: meshGradient 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes meshGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-pattern-dots {
+            background-image: radial-gradient(#be185d 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:focus-within {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: var(--deep-rose);
+            transform: translateY(-5px);
+        }
+
+        /* WhatsApp Button Pulse */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 100;
+        }
+
+        .whatsapp-pulse {
+            background: #25d366;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-pulse:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-pulse::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid #25d366;
+            animation: pulse-ring 1.5s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        /* Chatbot Bubble */
+        .chat-bubble {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 20px 20px 0 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 220px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: slideIn 0.5s forwards 1s;
+        }
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        input, textarea {
+            background: transparent !important;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/60 backdrop-blur-xl border-b border-pink-100">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="index-gemini-6.html" class="text-2xl font-bold tracking-tighter text-pink-700">ROUZIANAH.</a>
+            <div class="space-x-10 text-xs font-bold uppercase tracking-widest hidden md:flex">
+                <a href="index-gemini-6.html" class="hover:text-pink-600 transition">Home</a>
+                <a href="about.html" class="hover:text-pink-600 transition">About</a>
+                <a href="index-gemini-6.html#works" class="hover:text-pink-600 transition">Portfolio</a>
+                <a href="#contact-form" class="text-pink-600 transition font-black">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="mesh-header pt-48 pb-32 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-7xl md:text-9xl font-black italic tracking-tighter mb-6 text-gray-900">Let's Create <br><span class="text-pink-700">Together.</span></h1>
+            <p class="text-pink-800/60 uppercase tracking-[0.4em] font-bold text-sm">Inquiries • Collaborations • Bookings</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-32 px-6 bg-white bg-pattern-dots relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+                
+                <!-- Left Side: Info -->
+                <div class="space-y-16">
+                    <div>
+                        <h2 class="text-5xl font-black italic mb-8 tracking-tighter">Reach Out Directly</h2>
+                        <p class="text-xl text-gray-500 font-light leading-relaxed max-w-md">
+                            Whether you're looking for a brand ambassador for your next activation or a commercial model for an editorial shoot, I'm just a message away.
+                        </p>
+                    </div>
+
+                    <div class="space-y-10">
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 border border-pink-100 group-hover:bg-pink-600 group-hover:text-white transition-all">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-black tracking-widest text-gray-400">Email Me</p>
+                                <a href="mailto:rouzianandirangu@gmail.com" class="text-2xl font-bold italic text-gray-900">rouzianandirangu@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 border border-pink-100 group-hover:bg-pink-600 group-hover:text-white transition-all">
+                                <i class="fas fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-black tracking-widest text-gray-400">Location</p>
+                                <p class="text-2xl font-bold italic text-gray-900">Nanyuki, Kenya</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 border border-pink-100 group-hover:bg-pink-600 group-hover:text-white transition-all">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-black tracking-widest text-gray-400">WhatsApp</p>
+                                <a href="https://wa.me/254710148587" class="text-2xl font-bold italic text-gray-900">+254 710 148 587</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Form -->
+                <div id="contact-form" class="glass-card p-12 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-pink-100/30 rounded-full blur-3xl"></div>
+                    
+                    <form class="space-y-8 relative z-10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="border-b border-gray-200 pb-4">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-pink-700">Your Name</label>
+                                <input type="text" placeholder="John Doe" class="w-full text-lg py-2 mt-1">
+                            </div>
+                            <div class="border-b border-gray-200 pb-4">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-pink-700">Email Address</label>
+                                <input type="email" placeholder="john@example.com" class="w-full text-lg py-2 mt-1">
+                            </div>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-pink-700">Subject</label>
+                            <input type="text" placeholder="Brand Collaboration" class="w-full text-lg py-2 mt-1">
+                        </div>
+                        <div class="border-b border-gray-200 pb-8">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-pink-700">Your Message</label>
+                            <textarea rows="4" placeholder="Tell me about your project..." class="w-full text-lg py-2 mt-1 resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-black text-white py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] hover:bg-pink-700 transition-colors shadow-xl">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Component -->
+    <div class="whatsapp-float">
+        <div class="chat-bubble">
+            Hi! Rouzianah here ✨. How can I help you today?
+        </div>
+        <a href="https://wa.me/254710148587" target="_blank" class="whatsapp-pulse">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-[#0f0a0c] text-center border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black italic text-pink-500 tracking-tighter mb-8">ROUZIANAH.</h2>
+            <p class="text-gray-500 text-[10px] font-black uppercase tracking-[0.5em] mb-12">Building the brand, one interaction at a time.</p>
+            
+            <!-- Quick Chatbot Link at Footer -->
+            <div class="inline-flex items-center gap-4 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full border border-white/10 mb-12 hover:border-pink-500 transition-all cursor-pointer" onclick="window.open('https://wa.me/254710148587', '_blank')">
+                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-white text-xs font-bold uppercase tracking-widest">Chat with me on WhatsApp</span>
+            </div>
+
+            <p class="text-gray-700 text-[9px] font-black uppercase tracking-[0.6em]">&copy; 2026 Rouzianah Ndirangu • Kenya</p>
+        </div>
+    </footer>
+
+</body>
+</html>
